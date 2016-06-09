@@ -1,4 +1,3 @@
-package net.mrpaul.ads.MM175.ps04;
 import java.io.*;
 import java.util.Scanner;
 public class Map {
