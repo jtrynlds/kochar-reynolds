@@ -106,4 +106,13 @@ public class Map {
   public int getTerrType(int terr){
 	  return terrs[terr].getType();
   }
+  public int getWidth(){return width;}
+  public int getHeight(){return height;}
+  public int getNumTiles(){return numTiles;}
+  public int getNumTerrs(){return numTerritories;}
+  public int getNumWaterTerrs(){return numWaterTerritories;}
+  public int getNumRegularTerrs(){return numRegularTerritories;}
+  public int getNumDesertTerrs(){return numDesertTerritories;}
+  public int getMapName(){return name;}
+  public String getTerrName(int terr){return names[terr];}
 }
