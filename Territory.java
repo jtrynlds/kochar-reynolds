@@ -11,8 +11,9 @@ import java.util.List;
  */
 public class Territory {
 	
-	private List<Integer> neighbors;
-	private Player owner;
+	private int[] adjacent;
+	private int[] diagonal;
+	private int owner;
 	private String name;
 	private Army troops;
 	
@@ -20,18 +21,19 @@ public class Territory {
 	//0 is land, 1 is water, and 2 is desert
 	private int terrainType;
 	
-	public Territory(String territoryName, int startingTroops, int terrain, Integer[] adjacent){
+	public Territory(String territoryName, int startingTroops, int terrain, int[] a, int[] d){
 		name = territoryName;
 		terrainType = terrain;
 		troops = new Army(startingTroops, findDefense(terrainType));
-		neighbors.addAll(Arrays.asList(adjacent));
+		adjacent = a;
+		diagonal = d;
 	}
 	
 	/**
 	 * @return The player that owns this territory.
 	 */
-	public String getPlayerID(){
-		return owner.getId();
+	public String getOwnerID(){
+		return owner;
 	}
 	
 	/*
@@ -89,7 +91,7 @@ public class Territory {
 	 * Sets the owner of the territory.
 	 * @param newOwner The Player that the owner should be set to.
 	 */
-	public void setOwner(Player newOwner){
+	public void setOwner(int newOwner){
 		owner = newOwner;
 	}
 	
@@ -98,7 +100,7 @@ public class Territory {
 	 * @param newOwner The new owner.
 	 * @param numOccupying The number of armies that the new owner owns in this territory.
 	 */
-	public void changeOwner(Player newOwner, int numOccupying){
+	public void changeOwner(int newOwner, int numOccupying){
 		this.owner = newOwner;
 		troops = new Army(numOccupying, findDefense(terrainType));
 	}
