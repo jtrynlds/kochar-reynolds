@@ -91,7 +91,7 @@ public class Map {
     }
     mapScanner.close();
   }
-  public int getTile(int row, int col){
+  public int getTerr(int row, int col){
 	  return map[row][col];
   }
   public int[] getAdjacentTerrs(int terr){ 
