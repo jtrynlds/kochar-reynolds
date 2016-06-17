@@ -15,5 +15,6 @@ public class Uncertainty {
     Map map;
     if(mapFileName == "") map = new Map();
     else map = new Map(mapFileName);
+    UncertaintyView view = newUncertaintyView();
   }
 }
