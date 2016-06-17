@@ -11,6 +11,7 @@ public class Map {
   int numTerritories;
   int map[][];
   Territory terrs[];
+  Random random;
   String names[];
   public Map() throws FileNotFoundException{
     name = "defaultmap.csv";
@@ -21,6 +22,7 @@ public class Map {
     mapGen();
   }
   private void mapGen() throws FileNotFoundException{
+    random = new Random();
     Scanner mapScanner = new Scanner(new File(name));
     numTerritories = mapScanner.nextInt();
     names = new String[numTerritories];
@@ -91,7 +93,7 @@ public class Map {
     }
     mapScanner.close();
   }
-  public int getTile(int row, int col){
+  public int getTerr(int row, int col){
 	  return map[row][col];
   }
   public int[] getAdjacentTerrs(int terr){ 
@@ -106,4 +108,20 @@ public class Map {
   public int getTerrType(int terr){
 	  return terrs[terr].getType();
   }
+  public void randomizeTerritoryOwners(int numPlayers, int terrsPerPlayer){
+  	for(int i = 0; i < numPlayers; i++) for(int j = 0; j < terrsPerPlayer; j ++){
+  	        int k = random.nextInt(numTerritories);
+  	        while(terrs[k].getOwner != null) k = random.nextInt(numTerritories);
+  	        terrs[k].setOwner[i];
+  	}
+  }
+  public int getWidth(){return width;}
+  public int getHeight(){return height;}
+  public int getNumTiles(){return numTiles;}
+  public int getNumTerrs(){return numTerritories;}
+  public int getNumWaterTerrs(){return numWaterTerritories;}
+  public int getNumRegularTerrs(){return numRegularTerritories;}
+  public int getNumDesertTerrs(){return numDesertTerritories;}
+  public int getMapName(){return name;}
+  public String getTerrName(int terr){return names[terr];}
 }
